@@ -103,7 +103,7 @@ class EarlyConvViT(nn.Module):
             ])
 
         self.conv_layers.add_module("conv_1x1", torch.nn.Conv2d(in_channels=n_filter_list[-1], 
-                                    out_channels=64, 
+                                    out_channels=128, 
                                     stride=1,  # hardcoding for now because that's what the paper used 
                                     kernel_size=1,  # hardcoding for now because that's what the paper used 
                                     padding=0))  # hardcoding for now because that's what the paper used
