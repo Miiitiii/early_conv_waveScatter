@@ -127,15 +127,15 @@ class EarlyConvViT(nn.Module):
         self.scattering = Scattering2D(J=4,L=4, shape=(224, 224))
 
     def forward(self, img):
-        print(img.shape)
+        #print(img.shape)
         x1 = self.conv_layers(img)
         x2 = self.scattering(img)
         x2 = x2.squeeze(1)
-        print(x1.shape , x2.shape)
+        #print(x1.shape , x2.shape)
         x = torch.cat((x1, x2), 1)
         x = self.rearrange(x)
 
-        print(x.shape)
+        #print(x.shape)
         b, n, _ = x.shape
 
         cls_tokens = repeat(self.cls_token, '() n d -> b n d', b = b)
