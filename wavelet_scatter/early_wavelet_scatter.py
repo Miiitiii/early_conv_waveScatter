@@ -124,7 +124,7 @@ class EarlyConvViT(nn.Module):
             nn.Linear(dim, num_classes)
         )
 
-        self.scattering = Scattering2D(J=4,L=4, shape=(224, 224))
+        self.scattering = Scattering2D(J=4,L=5, shape=(224, 224))
 
     def forward(self, img):
         # x1 = self.conv_layers(img)
