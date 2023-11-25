@@ -111,7 +111,7 @@ class EarlyConvViT(nn.Module):
         #                             Rearrange('batch channels height width -> batch (height width) channels'))
 
 
-        self.conv_1d = torch.nn.Conv2d(in_channels=n_filter_list[-1] + 113,
+        self.conv_1d = torch.nn.Conv2d(in_channels=n_filter_list[-1] + 323,
                                     out_channels=128,
                                     stride=1,  # hardcoding for now because that's what the paper used
                                     kernel_size=1,  # hardcoding for now because that's what the paper used
@@ -132,7 +132,7 @@ class EarlyConvViT(nn.Module):
             nn.Linear(dim, num_classes)
         )
 
-        self.scattering = Scattering2D(J=4,L=4, shape=(224, 224))
+        self.scattering = Scattering2D(J=4,L=7, shape=(224, 224))
 
     def forward(self, img):
         x1 = self.conv_layers(img)
